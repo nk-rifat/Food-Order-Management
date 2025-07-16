@@ -1,8 +1,7 @@
 import { useState } from "react";
 import Products from "./Products";
 
-const CreateOrder = ({ setOrders }) => {
-  const [nextOrderId, setNextOrderId] = useState(1);
+const CreateOrder = ({ handlePlaceOrder }) => {
   const [currentOrder, setCurrentOrder] = useState({
     name: "",
     products: [],
@@ -32,15 +31,8 @@ const CreateOrder = ({ setOrders }) => {
     }
   }
 
-  function handlePlaceOrder() {
-    const orderWithId = {
-      ...currentOrder,
-      id: nextOrderId,
-      status: "pending",
-    };
-
-    setOrders((prevOrders) => [orderWithId, ...prevOrders]);
-    setNextOrderId((prev) => prev + 1);
+  function handleAddOrder() {
+    handlePlaceOrder(currentOrder);
 
     setCurrentOrder({
       name: "",
@@ -81,7 +73,7 @@ const CreateOrder = ({ setOrders }) => {
       </div>
 
       <button
-        onClick={handlePlaceOrder}
+        onClick={handleAddOrder}
         disabled={!currentOrder.name || currentOrder.products.length === 0}
         className="w-full bg-primary hover:bg-opacity-90 text-white font-medium py-3 rounded-full transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1"
       >

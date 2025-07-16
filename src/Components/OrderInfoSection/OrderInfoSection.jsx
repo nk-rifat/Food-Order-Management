@@ -3,21 +3,13 @@ import FilterIcon from "../../Icons/FilterIcon";
 import OrderReports from "./OrderReports";
 import { useState } from "react";
 
-const OrderInfoSection = ({ orders, setOrders }) => {
+const OrderInfoSection = ({
+  orders,
+  handleDeleteOrder,
+  handleDeliverOrder,
+}) => {
+  
   const [filterStatus, setFilterStatus] = useState("All");
-
-  function handleDeleteOrder(id) {
-    const remainOrders = orders.filter((order) => order.id !== id);
-    setOrders(remainOrders);
-  }
-
-  function handleDeliverOrder(id) {
-    const updatedOrders = orders.map((order) =>
-      order.id === id ? { ...order, status: "delivered" } : order
-    );
-
-    setOrders(updatedOrders);
-  }
 
   const handleFilterChange = (e) => {
     setFilterStatus(e.target.value);
