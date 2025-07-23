@@ -2,13 +2,21 @@ import { useState } from "react";
 import Products from "./Products";
 
 const CreateOrder = ({ handlePlaceOrder }) => {
+  const [inputValue, setInputValue] = useState("");
+  const [nextOrderId, setNextOrderId] = useState(1);
   const [currentOrder, setCurrentOrder] = useState({
     name: "",
     products: [],
   });
 
   function handleInputValue(e) {
-    setCurrentOrder({ ...currentOrder, name: e.target.value });
+    const value = e.target.value;
+    setInputValue(value);
+
+    setCurrentOrder((prevOrder) => ({
+      ...prevOrder,
+      name: inputValue,
+    }));
   }
 
   function handleAddOrRemoveProduct(product) {
@@ -32,12 +40,22 @@ const CreateOrder = ({ handlePlaceOrder }) => {
   }
 
   function handleAddOrder() {
-    handlePlaceOrder(currentOrder);
+    const orderToSubmit = {
+      ...currentOrder,
+      id: nextOrderId,
+      status: "pending",
+    };
+
+    handlePlaceOrder(orderToSubmit); // send to parent
+
+    // Prepare for next order
+    setNextOrderId((prev) => prev + 1);
 
     setCurrentOrder({
       name: "",
       products: [],
     });
+    setInputValue("");
   }
   // calculate total price
   const totalPrice = currentOrder.products.reduce((total, product) => {
@@ -55,7 +73,7 @@ const CreateOrder = ({ handlePlaceOrder }) => {
       <div className="mb-4">
         <label className="block text-sm font-medium mb-2">Customer Name</label>
         <input
-          value={currentOrder.name}
+          value={inputValue}
           onChange={handleInputValue}
           type="text"
           className="w-full bg-gray-700 bg-opacity-50 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300"

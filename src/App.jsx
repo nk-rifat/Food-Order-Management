@@ -6,17 +6,9 @@ import OrderInfoSection from "./Components/OrderInfoSection/OrderInfoSection";
 
 function App() {
   const [orders, setOrders] = useState([]);
-  const [nextOrderId, setNextOrderId] = useState(1);
 
   function handlePlaceOrder(currentOrder) {
-    const orderWithId = {
-      ...currentOrder,
-      id: nextOrderId,
-      status: "pending",
-    };
-
-    setOrders((prevOrders) => [orderWithId, ...prevOrders]);
-    setNextOrderId((prev) => prev + 1);
+    setOrders((prevOrders) => [currentOrder, ...prevOrders]);
   }
 
   function handleDeleteOrder(id) {
