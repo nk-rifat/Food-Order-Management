@@ -15,7 +15,7 @@ const CreateOrder = ({ handlePlaceOrder }) => {
 
     setCurrentOrder((prevOrder) => ({
       ...prevOrder,
-      name: inputValue,
+      name: value,
     }));
   }
 
