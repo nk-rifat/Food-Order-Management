@@ -1,12 +1,64 @@
-# React + Vite
+# Food Order Management
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a responsive food ordering management system built with React (Vite) and Tailwind CSS v4. The goal of this project is to convert a static layout into interactive, component-based React architecture with order creation, dynamic billing, and status-based filtering.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Features
 
-## Expanding the ESLint configuration
+```md 
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+✅ React + Vite setup  
+✅ Tailwind CSS v4 styling  
+✅ Food item listing with icons, names, and prices  
+✅ Plus/Minus buttons to calculate dynamic bill total  
+✅ Order creation form with customer name and item list  
+✅ Real-time order summary with counts  
+✅ Status-based order updates (Pending → Delivered)  
+✅ Filter orders by status: All, Pending, Delivered  
+✅ Delete orders and update summary instantly  
+✅ Reusable components architecture  
+
+
+# Technologies Used
+
+- React
+- Vite
+- Tailwind CSS v4
+
+# Live Link (https://food-order-management11.netlify.app/)
+
+
+# Folder Structure 
+
+```md
+
+src/
+│
+├── assets/ 
+│
+├── components/
+│   ├── CreateOrder/
+|   |   |── CreateOrder.jsx
+|   |   └── Products.jsx
+|   |
+│   ├── Navbar/
+|   |   └── Navbar.jsx
+|   |
+│   └── OrderInfoSection/
+|       |── OrderInfoSection.jsx
+|       |── OrderReport.jsx
+|       └── OrderSummary.jsx
+| 
+|── Data
+|   └── data.js
+|
+|── Icons 
+|   |── FilterIcon.jsx
+|   |── MinusIcon.jsx
+|   |── PlusIcon.jsx 
+│
+├── App.jsx
+├── main.jsx
+└── index.css
+
+
