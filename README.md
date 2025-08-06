@@ -16,7 +16,8 @@ This is a responsive food ordering management system built with React (Vite) and
 ✅ Status-based order updates (Pending → Delivered)  
 ✅ Filter orders by status: All, Pending, Delivered  
 ✅ Delete orders and update summary instantly  
-✅ Reusable components architecture  
+✅ Reusable components architecture 
+``` 
 
 
 # Technologies Used
